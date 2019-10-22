@@ -7,13 +7,17 @@ const intialState = separable;
 export default function Page(state = intialState, action) {
   switch (action.type) {
     case SeparableActionTypes.CHANGE_PAGE:
-      console.log('changing page');
-      return state;
+      return {
+        ...state,
+        page: action.page,
+      };
     case SeparableActionTypes.CHANGE_PAGE_FINAL:
-      console.log('changing to final page');
-      return state;
+      return {
+        ...state,
+        page: action.page,
+        lang: action.lang,
+      };
     default:
-      console.log('default');
       return state;
   }
 }
