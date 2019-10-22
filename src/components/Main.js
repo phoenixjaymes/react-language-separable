@@ -5,14 +5,14 @@ import Home from './Home';
 import Final from './Final';
 
 
-const Main = ({ words, page }) => {
+const Main = ({ words, page, lang, changePageFinal }) => {
 
   let pageComponent;
 
   if (page === 'home') {
     pageComponent = <Home />;
   } else if (page === 'final') {
-    pageComponent = <Final answerList={words.de.answerList} />;
+    pageComponent = <Final answerList={words[lang].answerList} />;
   } else if (
     page === 'de'
     || page === 'nl'
@@ -22,6 +22,7 @@ const Main = ({ words, page }) => {
       <Task
         wordList={words[page].wordList}
         language={page}
+        changePageFinal={changePageFinal}
       />
     );
   }
