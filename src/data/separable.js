@@ -1,5 +1,5 @@
 const separable = {
-  page: 'final',
+  page: 'home',
   lang: '',
   words: {
     de: {
@@ -94,8 +94,8 @@ const separable = {
       ],
       answerList: [
         { id: 1, english: 'to reject', infinitive: 'afkeuren' },
-        { id: 1, english: 'to approve', infinitive: 'goedkeuren' },
-        { id: 1, english: 'to give up', infinitive: 'opgeven' },
+        { id: 2, english: 'to approve', infinitive: 'goedkeuren' },
+        { id: 3, english: 'to give up', infinitive: 'opgeven' },
       ],
     },
     za: {
@@ -136,8 +136,8 @@ const separable = {
       ],
       answerList: [
         { id: 1, english: 'to arrive', infinitive: 'ankommen' },
-        { id: 1, english: 'to come along', infinitive: 'mitkommen' },
-        { id: 1, english: 'to come back', infinitive: 'zuückkommen' },
+        { id: 2, english: 'to come along', infinitive: 'mitkommen' },
+        { id: 3, english: 'to come back', infinitive: 'zuückkommen' },
       ],
     },
   },
