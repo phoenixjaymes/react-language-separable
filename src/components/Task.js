@@ -20,6 +20,25 @@ class Task extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    const { wordList} = this.props;
+
+    if (wordList !== prevProps.wordList) {
+      this.resetComponent();
+    }
+  }
+
+  resetComponent = () => {
+    this.setState({
+      currentIndex: 0,
+      wordList: this.props.wordList,
+      selectedPrefix: '',
+      answer: '',
+      answerClass: '',
+      answerText: '',
+    });
+  }
+
   clearAnswerLast = () => {
     this.setState({
       selectedPrefix: '',
@@ -86,12 +105,12 @@ class Task extends Component {
   }
 
   handleFinishClick = () => {
-    // goto final page
-    console.log('going to final page');
+    const { language, changePageFinal } = this.props;
+    changePageFinal('final', language);
   }
 
   changeButtonLabel = (buttonLabel) => {
-    const buttonLabelNames = ['check', 'next', 'continue'];
+    // const buttonLabelNames = ['check', 'next', 'continue'];
     this.setState({ buttonLabel });
   }
 
