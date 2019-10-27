@@ -5,23 +5,25 @@
 }
 
 body {
+  background: #efeade;
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 
-h1,
 h2,
 p {
   margin-bottom: 15px;
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
+  margin-bottom: 20px;
   text-align: center;
 }
 
 h2 {
-  font-size: 1.375rem;
+  font-size: 1.25rem;
 }
 
 ul {
@@ -42,11 +44,14 @@ dl {
 
 
 header p {
-  color: #fff;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 5px;
-  padding-top: 5px;
+  padding: 3px 0;
   text-align: center;
+}
+
+header .inner-container {
+  max-width: 450px;
 }
 
 nav {
@@ -55,19 +60,13 @@ nav {
 
 nav ul {
   display: grid;
-  gap: 5px;
+  gap: 3px;
   grid-template-columns: repeat(4, 1fr);
   margin-bottom: 10px;
   padding: 0;
   text-align: center;
   width: 100%;
 }
-
-nav button {
-
-}
-
-
 
 main {
   display: flex;
@@ -88,39 +87,60 @@ footer {
 
 header,
 footer {
-  background: rgb(49, 36, 80);
+  color: #efeade;
+  background: #111314;
 }
 
 footer {
-  color: #fff;
   height: 40px;
   text-align: center;
 }
 
-button {
-  background: #5e42a6;
-  border: 1px solid #6e54ae;
-  border-radius: 4px;
-  color: #fff;
+button,
+nav button {
+  border: none;
+  border-radius: 5px;
   display: inline-block;
-  font-size: .9rem;
-  margin: 2px 2px;
-  min-width: 50px;
-  padding: 6px 10px;
+  font-size: 1rem;
+  margin: 2px 4px 5px;
+  min-width: 75px;
+  padding: 5px 10px;
+}
+
+button {
+  background: #992f23;
+  color: #efeade;
+}
+
+nav button {
+  background: transparent;
+  color: #898991;
+  font-size: 1.1rem;
+  margin: 0;
+  min-width: 65px;
+  padding: 6px 6px;
+}
+
+nav button.active {
+  color: #992f23;
 }
 
 button:hover {
-  background: #6e54ae;
+  background: #ad584f;
+  color: #fff;
   cursor: pointer;
 }
 
-
+nav button:hover {
+  background: transparent;
+  color: #efeade;
+}
 
 .main-container {
   display: flex;
   flex-flow: column nowrap;
 
-  height: 100vh;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
@@ -130,26 +150,30 @@ button:hover {
   max-width: 600px;
 }
 
-
 /***** task styles *****/
 .word-box,
 .prefix-box,
 .answer-buttons-box,
 .answer-box {
+  border-radius: 5px;
   font-size: 1.125rem;
   margin: 0 auto 15px;
   text-align: center;
   width: 300px;
 }
 
-.word-box {
+.word-box,
+.answer-box {
   display: flex;
   justify-content: center;
   flex-flow: column nowrap;
 
-  background: rgba(49, 36, 80, .04);
-  height: 64px;
+  height: 70px;
   line-height: 25px;
+}
+
+.word-box {
+  background: rgba(49, 36, 80, .04);
   margin: 0 auto 20px;
   max-width: 400px;
   text-align: center;
@@ -175,13 +199,13 @@ button:hover {
   text-align: center;
 }
 
-.answer-box {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+.answer-box__text {
+  margin-bottom: 5px;
+}
 
-  height: 65px;
-  padding-top: 5px;
+.answer-box__answer {
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .answer-box.answer-correct {
@@ -195,7 +219,7 @@ button:hover {
 
 
 /***** Final box styles *****/
-.final-box {border-radius: 5px;
+.final-box {
   max-width: 400px;
 }
 
@@ -210,10 +234,21 @@ button:hover {
 
 
 /***** buttons *****/
-
 .hero-buttons {
   text-align: center;
   min-width: 300px;
+}
+
+.hero-buttons button {
+  background: transparent;
+  border: 1px dashed #992f23;
+  color: #992f23;
+}
+
+.hero-buttons button:hover {
+  background: #992f23;
+  border-color: #992f23;
+  color: #efeade;
 }
 
 .btn-check {
@@ -222,9 +257,106 @@ button:hover {
 /***** end buttons *****/
 
 
-
-
 /**** Misc styles *****/
 .center-text {
   text-align: center;
+}
+
+
+@media (min-width: 544px) {
+  h2,
+  p {
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  h2 {
+    font-size: 1.375rem;
+  }
+
+  header p {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  nav {
+    margin-bottom: 15px;
+  }
+
+  button {
+    font-size: 1.1rem;
+    margin: 2px 6px;
+    padding: 5px 10px;
+  }
+
+  nav button {
+    font-size: 1.2rem;
+    margin: 0;
+    min-width: 80px;
+    padding: 8px 12px;
+  }
+
+  .hero-buttons button {
+    margin-bottom: 15px;
+    min-width: 170px;
+  }
+
+  .word-box,
+  .articles-box,
+  .check-answer-box,
+  .answer-box {
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    width: 300px;
+  }
+
+  .word-box,
+  .answer-box {
+    height: 90px;
+  }
+
+  .word-box p {
+    margin-bottom: 10px;
+  }
+
+  .answer-box__text {
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 940px), (orientation: portrait) and (min-width: 544px) {
+  h2,
+  p {
+    margin-bottom: 25px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+    margin: 2px 6px;
+    min-width: 80px;
+    padding: 6px 10px;
+  }
+
+  .hero-buttons button {
+    min-width: 180px;
+  }
+
+  .word-box,
+  .articles-box,
+  .check-answer-box,
+  .answer-box {
+    margin-bottom: 30px;
+  }
 }
