@@ -17,6 +17,11 @@ export default function Page(state = intialState, action) {
         page: action.page,
         lang: action.lang,
       };
+    case SeparableActionTypes.ADD_WORDS:
+      return {
+        ...state,
+        words: action.words,
+      };
     default:
       return state;
   }
