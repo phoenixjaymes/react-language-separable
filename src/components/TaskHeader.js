@@ -8,7 +8,7 @@ const TaskHeader = ({ language }) => {
   } else if (language === 'nl') {
     fullName = 'Dutch';
   } else if (language === 'za') {
-    fullName = 'AAfrikaans';
+    fullName = 'Afrikaans';
   } else {
     fullName = 'Unknown';
   }
