@@ -14,3 +14,10 @@ export const changePageFinal = (page, lang) => (
     lang,
   }
 );
+
+export const addWords = (words) => (
+  {
+    type: SeparableActionTypes.ADD_WORDS,
+    words,
+  }
+);
