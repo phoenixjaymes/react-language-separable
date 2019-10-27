@@ -44,6 +44,7 @@ class App extends Component {
     return (
       <div className="main-container">
         <Header
+          page={page}
           changePage={changePage}
         />
         <ErrorBoundary>
