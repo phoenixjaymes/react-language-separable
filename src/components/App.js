@@ -1,7 +1,6 @@
-import React from 'react';
-import { bindActionCreators } from 'redux';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as PageActionCreators from '../actions/separable';
+import { changePage, changePageFinal, addWords } from '../actions/separable';
 
 import '../App.css';
 
@@ -10,26 +9,55 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
-function App({ dispatch, page, words, lang }) {
-  const changePage = bindActionCreators(PageActionCreators.changePage, dispatch);
-  const changePageFinal = bindActionCreators(PageActionCreators.changePageFinal, dispatch);
+class App extends Component {
+  componentDidMount() {
+    this.fetchVerbs();
+  }
 
-  return (
-    <div className="main-container">
-      <Header
-        changePage={changePage}
-      />
-      <ErrorBoundary>
-        <Main
-          words={words}
-          page={page}
-          lang={lang}
-          changePageFinal={changePageFinal}
+  fetchVerbs = () => {
+    const { addWords } = this.props;
+
+    fetch('http://phoenixjaymes.com/assets/data/language/get-separable.php')
+      .then((reponse) => reponse.json())
+      .then((responseData) => {
+        sessionStorage.setItem('separableWords', JSON.stringify(responseData.data.words));
+
+        addWords(responseData.data.words);
+
+        this.setState({
+          loading: false,
+        });
+      })
+      .catch((error) => {
+        console.log('Error fetching and parsing data', error);
+
+        this.setState({
+          loading: false,
+          error: true,
+        });
+      });
+  }
+
+  render() {
+    const { page, words, lang, changePage, changePageFinal } = this.props;
+
+    return (
+      <div className="main-container">
+        <Header
+          changePage={changePage}
         />
-      </ErrorBoundary>
-      <Footer />
-    </div>
-  );
+        <ErrorBoundary>
+          <Main
+            words={words}
+            page={page}
+            lang={lang}
+            changePageFinal={changePageFinal}
+          />
+        </ErrorBoundary>
+        <Footer />
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => (
@@ -40,4 +68,10 @@ const mapStateToProps = (state) => (
   }
 );
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  changePage,
+  changePageFinal,
+  addWords,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
