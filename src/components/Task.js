@@ -21,7 +21,7 @@ class Task extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { wordList} = this.props;
+    const { wordList } = this.props;
 
     if (wordList !== prevProps.wordList) {
       this.resetComponent();
@@ -64,6 +64,10 @@ class Task extends Component {
     const { currentIndex, wordList, selectedPrefix } = this.state;
 
     if (selectedPrefix === '') {
+      this.setState({
+        answerClass: 'answer-incorrect',
+        answerText: 'Please select a prefix',
+      });
       return;
     }
 
@@ -110,12 +114,15 @@ class Task extends Component {
   }
 
   changeButtonLabel = (buttonLabel) => {
-    // const buttonLabelNames = ['check', 'next', 'continue'];
     this.setState({ buttonLabel });
   }
 
   handlePrefixClick = (selectedPrefix) => {
-    this.setState({ selectedPrefix });
+    this.setState({
+      selectedPrefix,
+      answerClass: '',
+      answerText: '',
+    });
   }
 
   render() {
