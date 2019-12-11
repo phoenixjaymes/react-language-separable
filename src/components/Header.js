@@ -9,7 +9,7 @@ const Header = ({ page, changePage }) => {
   ];
 
   const buttons = pages.map((pageItem) => (
-    <li>
+    <li key={pageItem.id}>
       <button
         className={page === pageItem.id ? 'active' : ''}
         type="button"
