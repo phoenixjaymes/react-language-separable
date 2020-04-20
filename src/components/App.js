@@ -17,7 +17,7 @@ class App extends Component {
   fetchVerbs = () => {
     const { addWords } = this.props;
 
-    fetch('http://phoenixjaymes.com/assets/data/language/separables/')
+    fetch('https://phoenixjaymes.com/assets/data/language/separables/')
       .then((reponse) => reponse.json())
       .then((responseData) => {
         sessionStorage.setItem('separableWords', JSON.stringify(responseData.data.words));
