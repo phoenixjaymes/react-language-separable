@@ -5,12 +5,14 @@ import Home from './Home';
 import Final from './Final';
 
 
-const Main = ({ words, page, lang, changePageFinal }) => {
+const Main = ({
+  words, page, lang, changePage, changePageFinal,
+}) => {
 
   let pageComponent;
 
   if (page === 'home') {
-    pageComponent = <Home />;
+    pageComponent = <Home changePage={changePage} />;
   } else if (page === 'final') {
     pageComponent = <Final answerList={words[lang].answerList} />;
   } else if (
