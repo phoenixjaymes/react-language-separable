@@ -52,6 +52,7 @@ class App extends Component {
             words={words}
             page={page}
             lang={lang}
+            changePage={changePage}
             changePageFinal={changePageFinal}
           />
         </ErrorBoundary>
