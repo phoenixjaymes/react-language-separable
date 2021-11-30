@@ -118,6 +118,12 @@ class Task extends Component {
   }
 
   handlePrefixClick = (selectedPrefix) => {
+    const { buttonLabel } = this.state;
+
+    if (buttonLabel !== 'check') {
+      return;
+    }
+
     this.setState({
       selectedPrefix,
       answerClass: '',
